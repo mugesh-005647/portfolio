@@ -1,0 +1,720 @@
+@import "tailwindcss";
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+:root {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: #f5f7f6;
+  background: #07090b;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --bg: #07090b;
+  --bg-soft: #0a0f0e;
+  --surface: #0b1010;
+  --surface-2: #0e1514;
+
+  --mint: #8fffc1;
+  --mint-bright: #a8ffd0;
+  --mint-dark: #174d37;
+
+  --text: #f5f7f6;
+  --text-muted: #68747a;
+  --text-dim: #566168;
+
+  --border: #1c2927;
+  --border-light: rgba(143, 255, 193, 0.16);
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+
+  background: var(--bg);
+  color: var(--text);
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) var(--bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(143, 255, 193, 0.035),
+      transparent 35%
+    ),
+    var(--bg);
+
+  color: var(--text);
+
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* =========================================================
+   IMAGES / MEDIA
+========================================================= */
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================================================
+   THREE.JS
+========================================================= */
+
+canvas {
+  display: block;
+  touch-action: none;
+}
+
+/* =========================================================
+   DESKTOP CUSTOM CURSOR
+========================================================= */
+
+@media (min-width: 768px) {
+  body {
+    cursor: none;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    cursor: none;
+  }
+}
+
+/* =========================================================
+   MOBILE CURSOR
+========================================================= */
+
+@media (max-width: 767px) {
+  body {
+    cursor: auto;
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    cursor: auto;
+  }
+}
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+  background: rgba(143, 255, 193, 0.22);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: rgba(143, 255, 193, 0.22);
+  color: #ffffff;
+}
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1c2927;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--mint);
+}
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   FORMS
+========================================================= */
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+input,
+textarea,
+select {
+  color: var(--text);
+  background: transparent;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #465157;
+  opacity: 1;
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section {
+  position: relative;
+  width: 100%;
+}
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.page-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 768px) {
+  .page-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* =========================================================
+   MINT TEXT
+========================================================= */
+
+.text-mint {
+  color: var(--mint);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-dim {
+  color: var(--text-dim);
+}
+
+/* =========================================================
+   MINT GLOW
+========================================================= */
+
+.mint-glow {
+  box-shadow:
+    0 0 20px rgba(143, 255, 193, 0.12),
+    0 0 60px rgba(143, 255, 193, 0.05);
+}
+
+.mint-text-glow {
+  text-shadow:
+    0 0 20px rgba(143, 255, 193, 0.18),
+    0 0 50px rgba(143, 255, 193, 0.08);
+}
+
+/* =========================================================
+   GLASS PANEL
+========================================================= */
+
+.glass-panel {
+  background: rgba(10, 15, 14, 0.72);
+
+  border: 1px solid rgba(28, 41, 39, 0.95);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.015);
+}
+
+/* =========================================================
+   GRID BACKGROUND
+========================================================= */
+
+.grid-background {
+  background-image:
+    linear-gradient(
+      rgba(143, 255, 193, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(143, 255, 193, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 60px 60px;
+}
+
+/* =========================================================
+   SECTION DIVIDER
+========================================================= */
+
+.section-divider {
+  height: 1px;
+  width: 100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(143, 255, 193, 0.15),
+    transparent
+  );
+}
+
+/* =========================================================
+   BUTTON BASE
+========================================================= */
+
+.portfolio-button {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 50px;
+  padding: 0 24px;
+
+  border: 1px solid var(--border);
+
+  border-radius: 999px;
+
+  background: #0b1110;
+  color: var(--text);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
+}
+
+.portfolio-button:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(143, 255, 193, 0.45);
+
+  background: rgba(143, 255, 193, 0.08);
+
+  color: var(--mint);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.2),
+    0 0 25px rgba(143, 255, 193, 0.06);
+}
+
+.portfolio-button-primary {
+  background: var(--mint);
+  color: #07100c;
+
+  border-color: var(--mint);
+
+  box-shadow:
+    0 10px 30px rgba(143, 255, 193, 0.12);
+}
+
+.portfolio-button-primary:hover {
+  background: var(--mint-bright);
+  color: #07100c;
+
+  box-shadow:
+    0 12px 35px rgba(143, 255, 193, 0.2);
+}
+
+/* =========================================================
+   CONTACT FORM
+========================================================= */
+
+.contact-form {
+  width: 100%;
+}
+
+.contact-form-group {
+  width: 100%;
+}
+
+.contact-form-label {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: #68747a;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.contact-form-input,
+.contact-form-textarea {
+  width: 100%;
+
+  border: 1px solid #1c2927;
+
+  border-radius: 18px;
+
+  background: #090d0d;
+
+  color: #f5f7f6;
+
+  outline: none;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.contact-form-input {
+  height: 72px;
+
+  padding: 0 24px;
+
+  font-size: 16px;
+}
+
+.contact-form-textarea {
+  min-height: 260px;
+
+  padding: 22px 24px;
+
+  resize: vertical;
+
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.contact-form-input:hover,
+.contact-form-textarea:hover {
+  border-color: rgba(143, 255, 193, 0.25);
+}
+
+.contact-form-input:focus,
+.contact-form-textarea:focus {
+  border-color: rgba(143, 255, 193, 0.65);
+
+  background: #0a100f;
+
+  box-shadow:
+    0 0 0 3px rgba(143, 255, 193, 0.06),
+    0 0 30px rgba(143, 255, 193, 0.04);
+}
+
+.contact-form-input::placeholder,
+.contact-form-textarea::placeholder {
+  color: #3e494d;
+}
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.contact-submit-button {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+  min-height: 60px;
+
+  margin-top: 24px;
+
+  padding: 0 28px;
+
+  border: 1px solid #8fffc1;
+  border-radius: 16px;
+
+  background: #8fffc1;
+  color: #07100c;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.contact-submit-button:hover {
+  transform: translateY(-2px);
+
+  background: #a8ffd0;
+
+  box-shadow:
+    0 12px 35px rgba(143, 255, 193, 0.18),
+    0 0 25px rgba(143, 255, 193, 0.08);
+}
+
+.contact-submit-button:active {
+  transform: translateY(0);
+}
+
+.contact-submit-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* =========================================================
+   CONTACT SUCCESS MESSAGE
+========================================================= */
+
+.contact-success {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+
+  margin-top: 20px;
+  padding: 18px 22px;
+
+  border: 1px solid rgba(143, 255, 193, 0.3);
+
+  border-radius: 16px;
+
+  background: rgba(143, 255, 193, 0.06);
+
+  color: var(--mint);
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar-glass {
+  background: rgba(7, 9, 11, 0.72);
+
+  border: 1px solid rgba(28, 41, 39, 0.95);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
+.custom-cursor {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 28px;
+  height: 28px;
+
+  border: 1px solid rgba(143, 255, 193, 0.8);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  z-index: 99999;
+
+  transform: translate(-50%, -50%);
+
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.custom-cursor-dot {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: var(--mint);
+
+  pointer-events: none;
+
+  z-index: 100000;
+
+  transform: translate(-50%, -50%);
+}
+
+/* =========================================================
+   PAGE FADE
+========================================================= */
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+#root {
+  animation: pageFadeIn 0.7s ease-out;
+}
+
+/* =========================================================
+   FLOATING GLOW
+========================================================= */
+
+@keyframes softPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+.soft-pulse {
+  animation: softPulse 4s ease-in-out infinite;
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+  .contact-form-input {
+    height: 62px;
+    padding: 0 18px;
+  }
+
+  .contact-form-textarea {
+    min-height: 200px;
+    padding: 18px;
+  }
+
+  .contact-submit-button {
+    min-height: 56px;
+  }
+}
